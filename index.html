@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD | Interactive Session</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+
+    <main id="app">
+        <header class="hud-header">
+            <div class="status-indicator">
+                <span class="pulse"></span>
+                SYSTEM: ONLINE
+            </div>
+            <div class="session-timer" id="timer">00:00:00</div>
+        </header>
+
+        <section id="screen" class="interactive-screen">
+            <div id="content-area">
+                <!-- Dynamic content will be injected here -->
+                <div class="intro-screen">
+                    <h1 class="glitch" data-text="INITIATE SESSION">INITIATE SESSION</h1>
+                    <p class="typewriter">Awaiting user input for data collection sequence...</p>
+                    <button id="startBtn" class="gaming-btn">BEGIN INTERFACE</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="hud-footer">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="coordinates">LAT: 34.0522 N | LONG: 118.2437 W</div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

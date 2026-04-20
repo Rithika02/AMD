@@ -1,0 +1,250 @@
+:root {
+    --primary: #00f2ff;
+    --secondary: #7000ff;
+    --bg-dark: #0a0a0f;
+    --text-main: #e0e0ff;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-display: 'Orbitron', sans-serif;
+    --border-color: rgba(0, 242, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--font-mono);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Effects */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.noise {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: 99;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    margin: 10px;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+/* HUD Header */
+.hud-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pulse {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--primary);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; }
+    100% { opacity: 0.4; }
+}
+
+/* Interactive Screen */
+.interactive-screen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.intro-screen {
+    text-align: center;
+    max-width: 600px;
+}
+
+h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    color: var(--secondary);
+    z-index: -1;
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.typewriter {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.8;
+    min-height: 1.5em;
+}
+
+.gaming-btn {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    padding: 15px 40px;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+}
+
+.gaming-btn:hover {
+    background: var(--primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 30px var(--primary);
+}
+
+/* Question Styles */
+.question-container {
+    width: 100%;
+    max-width: 600px;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.question-text {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--primary);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 20px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-mono);
+}
+
+.option-btn:hover {
+    background: rgba(0, 242, 255, 0.1);
+    border-color: var(--primary);
+    transform: scale(1.02);
+}
+
+/* HUD Footer */
+.hud-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.progress-container {
+    width: 60%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.coordinates {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* Results */
+.result-screen {
+    text-align: center;
+}
+
+.rank-badge {
+    font-size: 4rem;
+    color: var(--secondary);
+    font-family: var(--font-display);
+    margin: 20px 0;
+    text-shadow: 0 0 20px var(--secondary);
+}
