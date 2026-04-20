@@ -89,5 +89,20 @@ function showResults() {
             <p>Summary of sequence: ${userAnswers.join(' > ')}</p>
             <button class="gaming-btn" style="margin-top: 30px" onclick="location.reload()">RE-INITIALIZE</button>
         </div>
+        
+        <div id="thankYouOverlay" class="thank-you-overlay hidden">
+            <div class="thank-you-content">
+                <h2 class="cyan-glow">THANKS FOR PARTICIPATING</h2>
+                <p>Data successfully transmitted to AMD mainframe.</p>
+                <div class="separator"></div>
+                <button class="gaming-btn small" onclick="document.getElementById('thankYouOverlay').classList.add('hidden')">CLOSE</button>
+            </div>
+        </div>
     `;
+
+    // Show thank you note with a slight delay
+    setTimeout(() => {
+        const overlay = document.getElementById('thankYouOverlay');
+        if (overlay) overlay.classList.remove('hidden');
+    }, 2000);
 }
