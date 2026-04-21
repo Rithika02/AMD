@@ -93,7 +93,7 @@ function showResults() {
         <div id="thankYouOverlay" class="thank-you-overlay hidden">
             <div class="thank-you-content">
                 <h2 class="cyan-glow">THANKS FOR PARTICIPATING</h2>
-                <p>Data successfully transmitted to AMD mainframe.</p>
+                <p>Data successfully transmitted to AMD project: amd-first-494006.</p>
                 <div class="separator"></div>
                 <button class="gaming-btn small" onclick="document.getElementById('thankYouOverlay').classList.add('hidden')">CLOSE</button>
             </div>
